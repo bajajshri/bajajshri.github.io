@@ -1,16 +1,186 @@
 <!DOCTYPE HTML>
 <!--
-	Massively by HTML5 UP
+	Based on Massively by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="en">
 	<head>
-		<title>Massively by HTML5 UP</title>
+		<title>Shriyash Bajaj | Robotics Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Custom additions for project cards + modal -->
+		<style>
+
+			/* Project card grid */
+
+				.project-grid {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 3rem;
+					margin: 0 0 4rem 0;
+				}
+
+				@media screen and (max-width: 736px) {
+					.project-grid {
+						grid-template-columns: 1fr;
+						gap: 2.5rem;
+					}
+				}
+
+				.project-card {
+					cursor: pointer;
+					border: solid 1px rgba(210, 215, 217, 0.75);
+					border-radius: 4px;
+					overflow: hidden;
+					display: flex;
+					flex-direction: column;
+					transition: transform 0.2s ease, box-shadow 0.2s ease;
+					background: #fff;
+				}
+
+				.project-card:hover {
+					transform: translateY(-4px);
+					box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+				}
+
+				.project-card .thumb {
+					position: relative;
+					overflow: hidden;
+					background: #f0f0f0;
+				}
+
+				.project-card .thumb img {
+					display: block;
+					width: 100%;
+					height: 220px;
+					object-fit: cover;
+				}
+
+				.project-card .thumb .overlay {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: rgba(31, 45, 61, 0.72);
+					color: #fff;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 0.8rem;
+					letter-spacing: 0.2rem;
+					text-transform: uppercase;
+					font-weight: 600;
+					opacity: 0;
+					transition: opacity 0.2s ease;
+				}
+
+				.project-card:hover .thumb .overlay {
+					opacity: 1;
+				}
+
+				.project-card .card-body {
+					padding: 1.75rem;
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+				}
+
+				.project-card h3 {
+					margin: 0 0 0.75rem 0;
+					font-size: 0.9rem;
+					line-height: 1.5;
+				}
+
+				.project-card p {
+					font-size: 0.85rem;
+					line-height: 1.7;
+					margin: 0 0 1.25rem 0;
+					flex: 1;
+				}
+
+			/* Tag pills */
+
+				.tags {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 0.5rem;
+				}
+
+				.tags li {
+					font-size: 0.65rem;
+					letter-spacing: 0.15rem;
+					text-transform: uppercase;
+					font-weight: 600;
+					background: #f4f7f9;
+					color: #5b6b7b;
+					border-radius: 3px;
+					padding: 0.35rem 0.7rem;
+				}
+
+			/* Modal */
+
+				.project-details { display: none; }
+
+				.modal-backdrop {
+					position: fixed;
+					inset: 0;
+					background: rgba(0, 0, 0, 0.75);
+					z-index: 10000;
+					display: none;
+					overflow-y: auto;
+					padding: 3rem 1.5rem;
+				}
+
+				.modal-backdrop.open { display: block; }
+
+				.modal-box {
+					background: #fff;
+					max-width: 780px;
+					margin: 0 auto;
+					border-radius: 4px;
+					position: relative;
+					padding: 3rem;
+				}
+
+				@media screen and (max-width: 736px) {
+					.modal-box { padding: 2rem 1.5rem; }
+					.modal-backdrop { padding: 1.5rem 0.75rem; }
+				}
+
+				.modal-close {
+					position: absolute;
+					top: 1rem;
+					right: 1.25rem;
+					background: none;
+					border: 0;
+					font-size: 2rem;
+					line-height: 1;
+					cursor: pointer;
+					color: #5b6b7b;
+					padding: 0;
+				}
+
+				.modal-close:hover { color: #1f2d3d; }
+
+				.modal-box img,
+				.modal-box video {
+					width: 100%;
+					border-radius: 3px;
+					margin: 0 0 2rem 0;
+				}
+
+				.modal-box h2 { margin-bottom: 1.5rem; }
+				.modal-box h4 { margin-bottom: 0.75rem; }
+
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -19,10 +189,10 @@
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<h1>Shriyash<br />
+						Bajaj</h1>
+						<p>Robotics and controls, from simulation to hardware.<br />
+						Autonomous racing, drone control, and RF-aware mechanical design.</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -30,180 +200,211 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
+						<a href="index.html" class="logo">Shriyash Bajaj</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
+							<li class="active"><a href="index.html">Projects</a></li>
 						</ul>
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bajajshri" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
+						<header class="major">
+							<h2>Selected Projects</h2>
+							<p>Click any project to see the full write-up.</p>
+						</header>
+
+						<div class="project-grid">
+
+							<!-- ============ PROJECT 1 ============ -->
+							<article class="project-card">
+								<div class="thumb">
+									<img src="images/pic01.jpg" alt="F1TENTH autonomous race car" />
+									<div class="overlay">View Details</div>
+								</div>
+								<div class="card-body">
+									<h3>F1TENTH Autonomous Racing Platform</h3>
+									<p>Full autonomy stack on a 1/10-scale race car: localization, SLAM, control, and sim-to-real policy transfer.</p>
+									<ul class="tags">
+										<li>ROS2</li><li>SLAM</li><li>Jetson</li><li>RL</li>
+									</ul>
+								</div>
+
+								<!-- Hidden detail content pulled into the modal -->
+								<div class="project-details">
+									<img src="images/pic01.jpg" alt="F1TENTH autonomous race car" />
+									<h2>F1TENTH Autonomous Racing Platform</h2>
+									<p>A complete autonomy stack running on a 1/10-scale autonomous race car, built on a Jetson AGX Orin with ROS2 Humble, a ZED Mini stereo camera, and a VESC motor controller.</p>
+
+									<h4>What I built</h4>
+									<ul>
+										<li>Dual-EKF localization stack using <code>robot_localization</code>, fully REP-105 compliant, fusing wheel odometry, IMU, and visual odometry.</li>
+										<li>ZED SLAM with RTAB-Map ICP tuned for featureless indoor environments where visual features alone fail.</li>
+										<li>A pure pursuit controller with curvature-adaptive lookahead, so the car tightens its lookahead through corners and extends it on straights.</li>
+										<li>Sim-to-real PPO policy transfer using a frame-skip curriculum and direction randomization during training.</li>
+										<li><code>zed_map_tools</code>, a ROS2 companion package for the mapping and post-processing workflow.</li>
+									</ul>
+
+									<h4>Notable problem solved</h4>
+									<p>The VESC driver publishes odometry with a zero covariance matrix, which silently breaks EKF fusion. I wrote <code>odom_cov_fixer.py</code> to inject realistic covariance values before the message reaches the filter.</p>
+
+									<h4>Stack</h4>
+									<ul class="tags">
+										<li>ROS2 Humble</li><li>Jetson AGX Orin</li><li>ZED Mini</li><li>RTAB-Map</li><li>PPO</li><li>Python</li>
+									</ul>
+
+									<ul class="actions" style="margin-top: 2rem;">
+										<li><a href="https://github.com/YOUR-USERNAME/YOUR-F1TENTH-REPO" class="button primary">View Code</a></li>
+									</ul>
+								</div>
 							</article>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
-
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
+							<!-- ============ PROJECT 2 ============ -->
+							<article class="project-card">
+								<div class="thumb">
+									<img src="images/pic02.jpg" alt="Crazyflie drone tube flight" />
+									<div class="overlay">View Details</div>
 								</div>
-							</footer>
+								<div class="card-body">
+									<h3>Crazyflie KNODE Tube Flight</h3>
+									<p>Neural residual modeling and adaptive control to fly a nano-quadrotor through a physical tube.</p>
+									<ul class="tags">
+										<li>Neural ODE</li><li>L1 Adaptive</li><li>Mocap</li>
+									</ul>
+								</div>
+
+								<div class="project-details">
+									<img src="images/pic02.jpg" alt="Crazyflie drone tube flight" />
+									<h2>Crazyflie KNODE Tube Flight</h2>
+									<p>Flying a Crazyflie nano-quadrotor through a physical tube, where aerodynamic ground and wall effects make the nominal dynamics model badly wrong. Tracked with OptiTrack motion capture.</p>
+
+									<h4>Approach</h4>
+									<ul>
+										<li>A geometric controller as the baseline, augmented with L1 adaptive control for fast disturbance rejection.</li>
+										<li>A KNODE (Knowledge-based Neural ODE) residual model learning the gap between nominal and true dynamics, with residuals expressed in the body frame.</li>
+										<li>A 400 Hz buffered CSV logging pipeline, gated on tube-pass state so training data captures only the relevant flight regime.</li>
+										<li>Two KNODE variants for comparison: radial-distance-only inputs versus full pose and attitude inputs.</li>
+									</ul>
+
+									<h4>Key insight</h4>
+									<p>The correct training input is the pre-gamma desired thrust and torque, not the commanded thrust. Using the commanded value causes KNODE to learn the boundary correction term instead of the true aerodynamic residual, which defeats the purpose of the model.</p>
+
+									<h4>Stack</h4>
+									<ul class="tags">
+										<li>Python</li><li>ROS2</li><li>OptiTrack</li><li>PyTorch</li><li>RotorPy</li>
+									</ul>
+
+									<ul class="actions" style="margin-top: 2rem;">
+										<li><a href="https://github.com/YOUR-USERNAME/YOUR-KNODE-REPO" class="button primary">View Code</a></li>
+									</ul>
+								</div>
+							</article>
+
+							<!-- ============ PROJECT 3 ============ -->
+							<article class="project-card">
+								<div class="thumb">
+									<img src="images/pic03.jpg" alt="NMPC trajectory optimization" />
+									<div class="overlay">View Details</div>
+								</div>
+								<div class="card-body">
+									<h3>Quaternion NMPC in CasADi</h3>
+									<p>Full-quaternion nonlinear MPC with soft tube constraints, built for real-time solve rates.</p>
+									<ul class="tags">
+										<li>CasADi</li><li>acados</li><li>Optimization</li>
+									</ul>
+								</div>
+
+								<div class="project-details">
+									<img src="images/pic03.jpg" alt="NMPC trajectory optimization" />
+									<h2>Quaternion NMPC in CasADi</h2>
+									<p>A nonlinear model predictive controller for quadrotor flight, formulated directly on the quaternion state to avoid the gimbal and wrapping problems that come with Euler angle formulations.</p>
+
+									<h4>Formulation</h4>
+									<ul>
+										<li>10-state full quaternion model with RK4 integration across the prediction horizon.</li>
+										<li>Soft tube constraints, so the solver stays feasible when the reference is briefly unreachable rather than failing outright.</li>
+										<li>Baumgarte stabilization to keep the quaternion on the unit sphere across integration steps instead of drifting off it.</li>
+									</ul>
+
+									<h4>Solver strategy</h4>
+									<p>acados with SQP-RTI is the deployment target, chosen for real-time solve rates on embedded hardware. ipopt is used only offline to validate that the RTI solution matches the fully converged one.</p>
+
+									<h4>Stack</h4>
+									<ul class="tags">
+										<li>CasADi</li><li>acados</li><li>Python</li><li>uv</li>
+									</ul>
+
+									<ul class="actions" style="margin-top: 2rem;">
+										<li><a href="https://github.com/YOUR-USERNAME/YOUR-NMPC-REPO" class="button primary">View Code</a></li>
+									</ul>
+								</div>
+							</article>
+
+							<!-- ============ PROJECT 4 ============ -->
+							<article class="project-card">
+								<div class="thumb">
+									<img src="images/pic04.jpg" alt="Radar enclosure design" />
+									<div class="overlay">View Details</div>
+								</div>
+								<div class="card-body">
+									<h3>Roof-Mounted Radar Enclosure</h3>
+									<p>Radome design balancing weather protection against clean RF transmission.</p>
+									<ul class="tags">
+										<li>RF Design</li><li>CAD</li><li>Materials</li>
+									</ul>
+								</div>
+
+								<div class="project-details">
+									<img src="images/pic04.jpg" alt="Radar enclosure design" />
+									<h2>Roof-Mounted Radar Enclosure</h2>
+									<p>A protective radome for a roof-mounted radar unit. The design problem is a tradeoff: the enclosure has to survive weather and mounting loads while staying as close to RF-transparent as possible.</p>
+
+									<h4>Design considerations</h4>
+									<ul>
+										<li>Material selection between polycarbonate and HDPE tubing, weighing dielectric constant and loss tangent against structural durability and UV resistance.</li>
+										<li>Wall thickness tuned to the operating wavelength, since a poorly chosen thickness causes reflection losses that directly degrade detection range.</li>
+										<li>Frequency-dependent sizing, with the target band determining how tight the thickness tolerance needs to be.</li>
+									</ul>
+
+									<h4>Stack</h4>
+									<ul class="tags">
+										<li>CAD</li><li>RF Analysis</li><li>Materials Selection</li>
+									</ul>
+
+									<ul class="actions" style="margin-top: 2rem;">
+										<li><a href="https://github.com/YOUR-USERNAME/YOUR-RADOME-REPO" class="button primary">View Code</a></li>
+									</ul>
+								</div>
+							</article>
+
+						</div>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
 						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
 							<section>
 								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
+								<p><a href="mailto:you@example.com">you@example.com</a></p>
 							</section>
 							<section>
-								<h3>Social</h3>
+								<h3>Location</h3>
+								<p>Your City, State</p>
+							</section>
+							<section>
+								<h3>Elsewhere</h3>
 								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bajajshri" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</section>
 						</section>
@@ -211,9 +412,17 @@
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+						<ul><li>&copy; Shriyash Bajaj</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
 
+			</div>
+
+		<!-- Modal -->
+			<div class="modal-backdrop" id="modal">
+				<div class="modal-box">
+					<button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+					<div id="modalContent"></div>
+				</div>
 			</div>
 
 		<!-- Scripts -->
@@ -224,6 +433,43 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				(function () {
+					var modal = document.getElementById('modal');
+					var content = document.getElementById('modalContent');
+					var closeBtn = document.getElementById('modalClose');
+
+					function openModal(detailsEl) {
+						content.innerHTML = detailsEl.innerHTML;
+						modal.classList.add('open');
+						document.body.style.overflow = 'hidden';
+					}
+
+					function closeModal() {
+						modal.classList.remove('open');
+						content.innerHTML = '';
+						document.body.style.overflow = '';
+					}
+
+					document.querySelectorAll('.project-card').forEach(function (card) {
+						card.addEventListener('click', function () {
+							var details = card.querySelector('.project-details');
+							if (details) openModal(details);
+						});
+					});
+
+					closeBtn.addEventListener('click', closeModal);
+
+					modal.addEventListener('click', function (e) {
+						if (e.target === modal) closeModal();
+					});
+
+					document.addEventListener('keydown', function (e) {
+						if (e.key === 'Escape') closeModal();
+					});
+				})();
+			</script>
 
 	</body>
 </html>
