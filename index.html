@@ -236,7 +236,7 @@
 							<!-- ============ PROJECT 1 ============ -->
 							<article class="project-card">
 								<div class="thumb">
-									<img src="images/KNODE_NMPC.jpg" alt="F1TENTH Autonomous Racing" />
+									<img src="images/final_race.jpg" alt="F1TENTH Autonomous Racing" />
 									<div class="overlay">View Details</div>
 								</div>
 								<div class="card-body">
@@ -249,7 +249,6 @@
 
 								<!-- Hidden detail content pulled into the modal -->
 								<div class="project-details">
-									<img src="images/KNODE_NMPC.jpg" alt="Crazyflie drone tube flight" />
 									<video src="images/final_race.mp4" autoplay muted loop playsinline></video>
 									<h2>F1TENTH Autonomous Racing Platform</h2>
 									<p>A complete autonomy stack running on a 1/10-scale autonomous race car, built on a Jetson AGX Nano with ROS2 Humble, a 2D lidar, and a VESC motor controller.</p>
@@ -262,7 +261,7 @@
 										<li>Sim-to-real PPO policy transfer using a frame-skip curriculum and direction randomization during training.</li>
 										<li><code>foxglave_visualization</code>, a ROS2 companion package for the mapping and post-processing workflow.</li>
 									</ul>
-
+									<img src="images/KNODE_NMPC.jpg" alt="Crazyflie drone tube flight" />
 									<h4>Notable problem solved</h4>
 									<p>The VESC driver publishes odometry with a zero covariance matrix, which silently breaks EKF fusion. I wrote <code>odom_cov_fixer.py</code> to inject realistic covariance values before the message reaches the filter.</p>
 
