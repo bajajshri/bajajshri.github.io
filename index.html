@@ -258,8 +258,8 @@
 									<ul>
 										<li>Dual-EKF localization stack using <code>robot_localization</code> fusing wheel odometry, IMU, and lidar based particle filter.</li>
 										<li>MPPI controller for trajectory following and obstacle avoidance.</li>
-										<li>Deployed Reinforcement Learning policies for autonomous racing with online adaptation module that collects data and sends it to an ofline server for iterative policy improvement</li>
-										<li>Designed new hardware platform for offraod racing using ZED stereo camera and deploying VIO for localization and mapping</li>
+										<li>Deployed Reinforcement Learning policies for autonomous racing with online adaptation module that collects data and sends it to an ofline server for iterative policy improvement.</li>
+										<li>Designed new hardware platform for offraod racing using ZED stereo camera and deploying VIO for localization and mapping.</li>
 										<li><code>foxglave_visualization</code>, a ROS2 companion package for the mapping and post-processing workflow.</li>
 									<video src="images/offroad_car.MP4" autoplay muted loop playsinline></video>
 									</ul>
@@ -307,9 +307,10 @@
 
 									<h4>Key insight</h4>
 									<p>Normailization of inputs based on tube and drone characteristics helps in improving the model's generalization and convergence.</p>
-									<p>Flying through a vertical section of pipe cause almost 20% loss in thrust due to pressue acumulation, which the kNODE can learn to compensate for.</p>
+									<p>Flying through a vertical section of pipe cause almost 20% loss in thrust due to pressure acumulation, which the KNODE can learn to compensate for.</p>
 									<p>Permutation importance test of input features showed limited contribution of features like tilt.</p>
 									<p>Removing reduced order models can help use a more generlized model that does not require model switching at corners.</p>
+									<p>Integrating RNN structure with NODE for real-time applications.</p>
 
 									<h4>Stack</h4>
 									<ul class="tags">
@@ -343,17 +344,19 @@
 
 									<h4>Formulation</h4>
 									<ul>
-										<li>10-state full quaternion model with RK4 integration across the prediction horizon.</li>
-										<li>Soft tube constraints, so the solver stays feasible when the reference is briefly unreachable rather than failing outright.</li>
-										<li>Baumgarte stabilization to keep the quaternion on the unit sphere across integration steps instead of drifting off it.</li>
+										<li>Creating a URDF and physic model in Pinocchio.</li>
+										<li>Creating a collocation strategy using centroidal dynamics for trajectory optimization.</li>
+										<li>Solving using IPOPT through the CasADi interface and then using MPC to solve for joint forces.</li>
 									</ul>
 
 									<h4>Solver strategy</h4>
-									<p>acados with SQP-RTI is the deployment target, chosen for real-time solve rates on embedded hardware. ipopt is used only offline to validate that the RTI solution matches the fully converged one.</p>
+									<p>setting constraints on the momentum at different time steps.</p>
+									<p>minimizing comnibined joint forces and reaction forces from the ground.</p>
+									<p>Solving a QP around the nominal trajectory for real-time control in Mujoco.</p>
 
 									<h4>Stack</h4>
 									<ul class="tags">
-										<li>CasADi</li><li>acados</li><li>Python</li><li>uv</li>
+										<li>CasADi</li><li>Pinocchio</li><li>Python</li><li>uv</li><li>Mujoco</li>
 									</ul>
 
 									<ul class="actions" style="margin-top: 2rem;">
@@ -394,7 +397,7 @@
 									</ul>
 
 									<ul class="actions" style="margin-top: 2rem;">
-										<li><a href="https://github.com/YOUR-USERNAME/YOUR-RADOME-REPO" class="button primary">View Code</a></li>
+										<li><a href="https://github.com/bajajshri/final_ese651_project" class="button primary">View Code</a></li>
 									</ul>
 								</div>
 							</article>
@@ -428,10 +431,6 @@
 									<h4>Stack</h4>
 									<ul class="tags">
 										<li>CAD</li><li>RF Analysis</li><li>Materials Selection</li>
-									</ul>
-
-									<ul class="actions" style="margin-top: 2rem;">
-										<li><a href="https://github.com/YOUR-USERNAME/YOUR-RADOME-REPO" class="button primary">View Code</a></li>
 									</ul>
 								</div>
 							</article>
