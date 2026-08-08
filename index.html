@@ -262,7 +262,6 @@
 										<li>Designed new hardware platform for offraod racing using ZED stereo camera and deploying VIO for localization and mapping</li>
 										<li><code>foxglave_visualization</code>, a ROS2 companion package for the mapping and post-processing workflow.</li>
 									</ul>
-									<img src="images/KNODE_NMPC.jpg" alt="Crazyflie drone tube flight" />
 									<h4>Notable problem solved</h4>
 									<p>The VESC driver publishes odometry with a zero covariance matrix, which silently breaks EKF fusion. I wrote <code>odom_cov_fixer.py</code> to inject realistic covariance values before the message reaches the filter.</p>
 
@@ -294,22 +293,25 @@
 								<div class="project-details">
 									<video src="images/tube_video.mp4" autoplay muted loop playsinline></video>
 									<h2>Physics Informed Neural Network for Quadrotor Control</h2>
-									<p>Flying a Crazyflie nano-quadrotor through a physical tube, where aerodynamic ground and wall effects make the nominal dynamics model incorrect.</p>
+									<p>Flying a Crazyflie nano-quadrotor through a physical tube, where aerodynamic ground and wall effects make the nominal dynamics highly unstable</p>
 
 									<h4>Approach</h4>
 									<ul>
 										<li>A geometric controller as the baseline, augmented with reduced order disturbance models to model turbulence in a pipe.</li>
 										<li>A KNODE (Knowledge-based Neural ODE) residual model learning the gap between nominal and true dynamics, with residuals expressed in the body frame.</li>
-										<li>A 400 Hz buffered CSV logging pipeline, gated on tube-pass state so training data captures only the relevant flight regime.</li>
-										<li>Two KNODE variants for comparison: radial-distance-only inputs versus full pose and attitude inputs.</li>
+										<li>A pipline to record , train and compare different models like  radial-distance-only inputs versus full pose and attitude inputs.</li>
+										<li>Use of fluid dynamics concepts to come up with a reduced order model for reduced thrust</li>
 									</ul>
 
 									<h4>Key insight</h4>
-									<p>The correct training input is the pre-gamma desired thrust and torque, not the commanded thrust. Using the commanded value causes KNODE to learn the boundary correction term instead of the true aerodynamic residual, which defeats the purpose of the model.</p>
+									<p>Normailization of inputs based on tube and drone characteristics helps in improving the model's generalization and convergence.</p>
+									<p>Flying through a vertical section of pipe cause almost 20% loss in thrust due to pressue acumulation, which the kNODE can learn to compensate for.</p>
+									<p>Permutation importance test of input features to minimize irrelevant inputs like tilt.</p>
+									<p>removing reduced order models can help use a more generlized model that does not require model switching.</p>
 
 									<h4>Stack</h4>
 									<ul class="tags">
-										<li>Python</li><li>ROS2</li><li>OptiTrack</li><li>PyTorch</li><li>RotorPy</li><li>MPC</li><li>Docker</li>
+										<li>Python</li><li>ROS2</li><li>OptiTrack</li><li>PyTorch</li><li>RotorPy</li><li>MPC</li><li>Docker</li><li>ML</li>
 									</ul>
 
 									<ul class="actions" style="margin-top: 2rem;">
