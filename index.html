@@ -266,7 +266,7 @@
 									<h4>Notable problem solved</h4>
 									<p>The VESC driver publishes odometry with a zero covariance matrix, which silently breaks EKF fusion. I wrote scripts to inject variable covariance values before the message reaches the filter.</p>
 									<p>Warm starting the MPPI controller with a previous solution helps it converge faster and avoid local minima.</p>
-									<p> Post jump localization requires deadzone controller that takes commands from previous planned paths until the imu is reliable again.</p>
+									<p>Post jump localization requires deadzone controller that takes commands from previous planned paths until the imu is reliable again.</p>
 									<h4>Stack</h4>
 									<ul class="tags">
 										<li>ROS2 Humble</li><li>Jetson AGX Nano</li><li>ZED Mini</li><li>LiDAR</li><li>PPO</li><li>CUDA</li><li>FoxGlove</li>
@@ -387,7 +387,7 @@
 									<h4>Design considerations</h4>
 									<ul>
 										<li>Created a PPO  training pipeline and validated it in Issac simulation.</li>
-										<li>Experiment with different reward functions and ML architectures like LSTM or RNN to optimize performance.</li>
+										<li>Experiment with different reward functions, domain randomization and ML architectures like LSTM to optimize performance.</li>
 										<li>Optimized the reward function through iterative testing and validation.</li>
 									</ul>
 
@@ -412,16 +412,16 @@
 									<h3>Arch Platics Packaging</h3>
 									<p>Developed robotic packaging system from concept to deployment</p>
 									<ul class="tags">
-										<li>PLC</li><li>CAD</li><li>Project Management</li><li>Electrical System Design</li>
+										<li>PLC</li><li>CAD</li><li>Project Management</li><li>Electrical System Design</li><li>Control System Design</li>
 									</ul>
 								</div>
 
 								<div class="project-details">
 									<video src="images/arch_plastics_video.mp4" autoplay muted loop playsinline></video>
 									<h2>Roof-Mounted Radar Enclosure</h2>
-									<p>A protective radome for a roof-mounted radar unit. The design problem is a tradeoff: the enclosure has to survive weather and mounting loads while staying as close to RF-transparent as possible.</p>
+									<p>Developed robotic packaging system from concept to deployment</p>
 
-									<h4>Design considerations</h4>
+									<h4>System Architecture</h4>
 									<ul>
 										<li>Material selection between polycarbonate and HDPE tubing, weighing dielectric constant and loss tangent against structural durability and UV resistance.</li>
 										<li>Wall thickness tuned to the operating wavelength, since a poorly chosen thickness causes reflection losses that directly degrade detection range.</li>
